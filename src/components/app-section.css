@@ -1,0 +1,773 @@
+.app-section {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 6%;
+  color: #10264a;
+  background:
+    radial-gradient(ellipse at 76% 48%, rgba(214, 170, 104, 0.14), transparent 34%),
+    linear-gradient(115deg, #faf9f6 0%, #f8f5ee 54%, #f4efe5 100%);
+}
+
+.app-section__container {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 76px);
+  width: min(100%, 1320px);
+  margin: 0 auto;
+}
+
+.app-section__copy {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+}
+
+.app-section__badge {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 28px;
+  padding: 9px 18px;
+  border: 1px solid rgba(16, 38, 74, 0.12);
+  border-radius: 999px;
+  color: #29466d;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 5px 18px rgba(16, 38, 74, 0.05);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.app-section__heading {
+  margin: 0 0 24px;
+  color: #10264a;
+  font-size: clamp(38px, 4.2vw, 62px);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.app-section__heading span {
+  display: block;
+  color: #c38d43;
+  font-style: italic;
+}
+
+.app-section__description,
+.app-section__subdescription {
+  max-width: 540px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.app-section__description {
+  margin: 0 0 14px;
+  color: #394a62;
+}
+
+.app-section__subdescription {
+  margin: 0 0 30px;
+  color: #66758a;
+  font-size: 14px;
+}
+
+.app-section__downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.app-section__download {
+  display: inline-flex;
+  min-width: 174px;
+  align-items: center;
+  gap: 13px;
+  padding: 12px 18px;
+  border: 1px solid rgba(16, 38, 74, 0.13);
+  border-radius: 12px;
+  color: #fff;
+  background: #10264a;
+  box-shadow: 0 8px 18px rgba(16, 38, 74, 0.12);
+  text-decoration: none;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.app-section__download:hover {
+  transform: translateY(-3px);
+  background: #19375f;
+  box-shadow: 0 12px 24px rgba(16, 38, 74, 0.18);
+}
+
+.app-section__download:focus-visible {
+  outline: 3px solid #c38d43;
+  outline-offset: 4px;
+}
+
+.app-section__download svg {
+  width: 25px;
+  height: 25px;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
+.app-section__download span {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  text-align: left;
+}
+
+.app-section__download small {
+  color: #d9e0eb;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+}
+
+.app-section__download strong {
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.app-section__visual {
+  position: relative;
+  min-width: 0;
+  height: 520px;
+  perspective: 1100px;
+  isolation: isolate;
+}
+
+.app-section__glow {
+  position: absolute;
+  top: 14%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(214, 170, 104, 0.2), rgba(214, 170, 104, 0) 68%);
+  filter: blur(15px);
+}
+
+.app-phone {
+  position: absolute;
+  top: 50%;
+  width: 202px;
+  height: 414px;
+  opacity: 0;
+  filter: drop-shadow(0 22px 24px rgba(16, 38, 74, 0.2));
+  transition: opacity 700ms ease;
+}
+
+.app-section--visible .app-phone--left {
+  animation: app-phone-arrive-left 850ms cubic-bezier(0.2, 0.75, 0.25, 1) 100ms both;
+}
+
+.app-section--visible .app-phone--center {
+  animation: app-phone-arrive-center 900ms cubic-bezier(0.2, 0.75, 0.25, 1) 230ms both;
+}
+
+.app-section--visible .app-phone--right {
+  animation: app-phone-arrive-right 850ms cubic-bezier(0.2, 0.75, 0.25, 1) 360ms both;
+}
+
+.app-phone--left {
+  left: 5%;
+  z-index: 1;
+  margin-top: 22px;
+}
+
+.app-phone--center {
+  left: 50%;
+  z-index: 3;
+  width: 220px;
+  height: 450px;
+  margin-top: 0;
+  margin-left: -110px;
+}
+
+.app-phone--right {
+  right: 4%;
+  z-index: 2;
+  margin-top: 18px;
+}
+
+.app-phone__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  overflow: hidden;
+  border: 2px solid #182c44;
+  border-radius: 34px;
+  background: linear-gradient(145deg, #26394b, #07101d 32%, #101c2b);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 0 1px rgba(16, 38, 74, 0.1);
+}
+
+.app-phone__notch {
+  position: absolute;
+  z-index: 2;
+  top: 11px;
+  left: 50%;
+  width: 72px;
+  height: 16px;
+  border-radius: 0 0 12px 12px;
+  background: #101b2a;
+  transform: translateX(-50%);
+}
+
+.app-phone__screen {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 26px;
+  padding: 18px 12px 9px;
+  color: #18304c;
+  background: #f7f7f4;
+  font-family: var(--sans);
+  font-size: 10px;
+}
+
+.app-phone__status,
+.app-phone__topline,
+.app-phone__screen-heading,
+.app-phone__section-title,
+.app-phone__transaction,
+.app-phone__card-label,
+.app-phone__settings > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-phone__status {
+  height: 15px;
+  margin: 0 1px 13px;
+  font-size: 7px;
+  font-weight: 700;
+}
+
+.app-phone__topline {
+  align-items: flex-start;
+  margin-bottom: 13px;
+}
+
+.app-phone__topline > span,
+.app-phone__topline strong {
+  display: block;
+}
+
+.app-phone__topline > span {
+  color: #7a8797;
+  font-size: 8px;
+}
+
+.app-phone__topline strong {
+  margin-top: 2px;
+  font-size: 13px;
+}
+
+.app-phone__topline b {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #e2e5e9;
+  border-radius: 50%;
+  background: white;
+  text-align: center;
+  line-height: 23px;
+}
+
+.app-phone__card {
+  display: block;
+  height: 125px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 8px 18px rgba(16, 38, 74, 0.18);
+}
+
+.app-phone__card img,
+.app-phone__mini-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-phone__section-title {
+  margin: 18px 1px 9px;
+  font-size: 8px;
+}
+
+.app-phone__section-title span {
+  color: #8b98a9;
+  font-size: 7px;
+}
+
+.app-phone__transaction {
+  justify-content: flex-start;
+  gap: 7px;
+  min-height: 46px;
+  border-bottom: 1px solid #e9ebed;
+}
+
+.app-phone__transaction > i {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 8px;
+  background: #f0ede6;
+  font-size: 11px;
+  font-style: normal;
+}
+
+.app-phone__transaction > span {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.app-phone__transaction b {
+  font-size: 7px;
+}
+
+.app-phone__transaction small {
+  color: #8793a1;
+  font-size: 6px;
+}
+
+.app-phone__transaction > strong {
+  font-size: 7px;
+}
+
+.app-phone__nav {
+  display: flex;
+  justify-content: space-between;
+  margin: auto -4px 0;
+  padding-top: 9px;
+  border-top: 1px solid #e9ebed;
+  color: #64758a;
+  text-align: center;
+}
+
+.app-phone__nav > span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 13px;
+}
+
+.app-phone__nav small {
+  font-size: 6px;
+}
+
+.app-phone__screen-heading {
+  margin: 1px 0 14px;
+  font-size: 11px;
+}
+
+.app-phone__screen-heading > span {
+  color: #687b90;
+  font-size: 15px;
+}
+
+.app-phone__tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 11px;
+  padding: 5px;
+  border-radius: 9px;
+  background: #edece8;
+  color: #68778a;
+  font-size: 7px;
+}
+
+.app-phone__tabs > * {
+  padding: 6px 8px;
+}
+
+.app-phone__tabs .is-active {
+  border-radius: 7px;
+  color: white;
+  background: #183452;
+}
+
+.app-phone__balance {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px;
+  border: 1px solid #ece9e2;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.app-phone__balance small,
+.app-phone__balance > span {
+  color: #8190a0;
+  font-size: 7px;
+}
+
+.app-phone__balance strong {
+  font-size: 19px;
+  letter-spacing: -0.04em;
+}
+
+.app-phone__chart {
+  display: flex;
+  height: 82px;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 9px;
+  margin-top: 10px;
+  padding: 10px 9px 0;
+  border: 1px solid #ece9e2;
+  border-bottom: 0;
+  border-radius: 11px 11px 0 0;
+  background: #fff;
+}
+
+.app-phone__chart > span {
+  width: 13px;
+  max-height: 100%;
+  border-radius: 4px 4px 0 0;
+  background: #c9d1d8;
+}
+
+.app-phone__chart > .is-current {
+  background: #d7a75f;
+}
+
+.app-phone__chart-labels {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 9px 7px;
+  border: 1px solid #ece9e2;
+  border-top: 0;
+  border-radius: 0 0 11px 11px;
+  color: #8692a0;
+  background: #fff;
+  font-size: 6px;
+}
+
+.app-phone__screen--spending .app-phone__section-title {
+  margin-top: 12px;
+}
+
+.app-phone__mini-card {
+  display: block;
+  min-height: 126px;
+  margin: 0 0 13px;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(16, 38, 74, 0.16);
+}
+
+.app-phone__card-label {
+  padding: 10px 1px 13px;
+  border-bottom: 1px solid #e7e9eb;
+  font-size: 8px;
+}
+
+.app-phone__card-label b {
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: #668451;
+  background: #e9f0e3;
+  font-size: 7px;
+}
+
+.app-phone__settings {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.app-phone__settings > span {
+  min-height: 37px;
+  gap: 6px;
+  padding: 0 7px;
+  border: 1px solid #eceef0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.app-phone__settings i {
+  color: #c18d4d;
+  font-size: 11px;
+  font-style: normal;
+}
+
+.app-phone__settings b {
+  flex: 1;
+  font-size: 7px;
+}
+
+.app-phone__settings em {
+  color: #8a97a4;
+  font-size: 14px;
+  font-style: normal;
+}
+
+.app-phone__help {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 12px;
+  padding: 11px 9px;
+  border-radius: 9px;
+  background: #eeeae1;
+}
+
+.app-phone__help strong {
+  font-size: 7px;
+}
+
+.app-phone__help small {
+  color: #7a8795;
+  font-size: 6px;
+}
+
+@keyframes app-phone-arrive-left {
+  from {
+    opacity: 0;
+    transform: translate3d(30px, calc(-50% + 35px), 0) rotate(7deg) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, -50%, 0) rotate(-9deg) scale(1);
+  }
+}
+
+@keyframes app-phone-arrive-center {
+  from {
+    opacity: 0;
+    transform: translate3d(0, calc(-50% + 45px), 0) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, -50%, 0) scale(1);
+  }
+}
+
+@keyframes app-phone-arrive-right {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, calc(-50% + 35px), 0) rotate(-7deg) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, -50%, 0) rotate(9deg) scale(1);
+  }
+}
+
+@media (max-width: 960px) {
+  .app-section {
+    padding: 80px 5%;
+  }
+
+  .app-section__container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .app-section__copy {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .app-section__description,
+  .app-section__subdescription {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .app-section__downloads {
+    justify-content: center;
+  }
+
+  .app-section__visual {
+    width: min(100%, 620px);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .app-section {
+    padding: 64px 20px 54px;
+  }
+
+  .app-section__badge {
+    margin-bottom: 20px;
+  }
+
+  .app-section__heading {
+    font-size: clamp(35px, 10vw, 46px);
+  }
+
+  .app-section__description {
+    font-size: 14px;
+  }
+
+  .app-section__downloads {
+    gap: 9px;
+  }
+
+  .app-section__download {
+    min-width: 0;
+    gap: 9px;
+    padding: 10px 12px;
+  }
+
+  .app-section__download strong {
+    font-size: 13px;
+  }
+
+  .app-section__visual {
+    height: 390px;
+    width: 100%;
+  }
+
+  .app-phone {
+    width: 150px;
+    height: 308px;
+  }
+
+  .app-phone--left {
+    left: 0;
+    margin-top: 13px;
+  }
+
+  .app-phone--center {
+    width: 166px;
+    height: 340px;
+    margin-left: -83px;
+  }
+
+  .app-phone--right {
+    right: 0;
+    margin-top: 13px;
+  }
+
+  .app-phone__frame {
+    padding: 6px;
+    border-radius: 27px;
+  }
+
+  .app-phone__screen {
+    padding: 14px 9px 7px;
+    border-radius: 21px;
+    font-size: 8px;
+  }
+
+  .app-phone__notch {
+    top: 9px;
+    width: 56px;
+    height: 13px;
+  }
+
+  .app-phone__status {
+    margin-bottom: 8px;
+  }
+
+  .app-phone__card {
+    height: 93px;
+    border-radius: 11px;
+  }
+
+  .app-phone__card > strong {
+    font-size: 16px;
+  }
+
+  .app-phone__section-title {
+    margin-top: 12px;
+  }
+
+  .app-phone__transaction {
+    min-height: 36px;
+    gap: 5px;
+  }
+
+  .app-phone__transaction > i {
+    width: 21px;
+    height: 21px;
+    font-size: 9px;
+  }
+
+  .app-phone__nav {
+    padding-top: 6px;
+  }
+
+  .app-phone__nav > span {
+    font-size: 10px;
+  }
+
+  .app-phone__mini-card {
+    min-height: 98px;
+  }
+
+  .app-phone__settings {
+    gap: 5px;
+    margin-top: 8px;
+  }
+
+  .app-phone__settings > span {
+    min-height: 29px;
+    padding: 0 5px;
+  }
+
+  .app-phone__help {
+    margin-top: 8px;
+    padding: 8px 6px;
+  }
+
+  .app-phone__chart {
+    height: 58px;
+  }
+
+  .app-phone__balance {
+    padding: 9px;
+  }
+
+  .app-phone__balance strong {
+    font-size: 15px;
+  }
+
+  .app-phone__screen-heading {
+    margin-bottom: 9px;
+  }
+
+  .app-phone__tabs > * {
+    padding: 4px 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-phone {
+    opacity: 1;
+    animation: none !important;
+  }
+
+  .app-phone--left {
+    transform: translateY(-50%) rotate(-9deg);
+  }
+
+  .app-phone--center {
+    transform: translateY(-50%);
+  }
+
+  .app-phone--right {
+    transform: translateY(-50%) rotate(9deg);
+  }
+
+  .app-section__download {
+    transition: none;
+  }
+}

@@ -1,0 +1,36 @@
+.stats-value {
+  color: #f0c17b;
+  background: linear-gradient(
+    110deg,
+    #c78731 15%,
+    #f8e2bd 35%,
+    #ffffff 50%,
+    #f0c17b 65%,
+    #c78731 85%
+  );
+  background-size: 220% 100%;
+  background-position: 100% 0;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: stats-text-shimmer 5s ease-in-out infinite;
+}
+
+@keyframes stats-text-shimmer {
+  0%,
+  15% {
+    background-position: 100% 0;
+  }
+
+  70%,
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats-value {
+    animation: none;
+    background-position: 50% 0;
+  }
+}
